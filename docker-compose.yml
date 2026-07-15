@@ -1,14 +1,14 @@
 services:
-  app1:
+  app1_blue:
     build: ./App1
-    container_name: app1
+    container_name: app1_blue
     restart: unless-stopped
     networks:
       - webnet
 
-  app2:
+  app2_blue:
     build: ./App2
-    container_name: app2
+    container_name: app2_blue
     restart: unless-stopped
     networks:
       - webnet
@@ -21,11 +21,11 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - certbot-etc:/etc/letsencrypt          # certificats générés par Certbot
-      - certbot-webroot:/var/www/certbot       # dossier partagé pour le challenge HTTP-01
+      - certbot-etc:/etc/letsencrypt
+      - certbot-webroot:/var/www/certbot
     depends_on:
-      - app1
-      - app2
+      - app1_blue
+      - app2_blue
     networks:
       - webnet
 
@@ -35,10 +35,9 @@ services:
     volumes:
       - certbot-etc:/etc/letsencrypt
       - certbot-webroot:/var/www/certbot
-    # Boucle infinie : tente un renouvellement toutes les 12h
     entrypoint: >
       sh -c "trap exit TERM; while :; do
-      certbot renew --webroot -w /var/www/certbot --quiet;
+      certbot renew --webroot -w /var/www/certbot --quiet --deploy-hook 'nginx -s reload';
       sleep 12h & wait $${!}; done"
 
 networks:
