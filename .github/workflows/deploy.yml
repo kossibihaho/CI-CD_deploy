@@ -57,7 +57,7 @@ jobs:
   
   deploy:
     needs: test
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
       - name: Pull latest code on EC2
@@ -68,7 +68,7 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
             cd ${{ secrets.EC2_PROJECT_PATH }}
-            git pull origin main
+            git pull origin master
 
       - name: Blue-Green deploy App1
         uses: appleboy/ssh-action@v1.0.3
