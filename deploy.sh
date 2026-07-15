@@ -37,7 +37,7 @@ echo "set \$${APP_NAME}_upstream ${APP_NAME}_${NEW}:80;" > nginx-proxy/conf.d/up
 docker compose exec nginx-proxy nginx -s reload
 
 # 5. Arrêter l'ancien conteneur (seulement maintenant, trafic déjà basculé)
-sleep 3
+sleep 12
 docker rm -f ${APP_NAME}_${CURRENT} 2>/dev/null || true
 
 echo ">>> Déploiement de ${APP_NAME} terminé sans interruption : ${CURRENT} → ${NEW}"
