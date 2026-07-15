@@ -9,7 +9,7 @@ on:
 jobs:
 
   
-  # BUILD — vérifie que les images se construisent
+  # BUILD 
   
   build:
     runs-on: ubuntu-latest
