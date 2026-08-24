@@ -5,7 +5,7 @@ APP_NAME=$1
 PROJECT_DIR="/home/ubuntu/CI-CD_deploy"
 cd $PROJECT_DIR
 
-# Associer chaque app à son domaine, pour la vérification finale
+# Associer chaque application à son domaine, pour la vérification finale
 case $APP_NAME in
   app1) DOMAIN="kossiapp.duckdns.org" ;;
   app2) DOMAIN="kossiapp2.duckdns.org" ;;
