@@ -94,7 +94,7 @@ Le script `deploy.sh` bascule une application vers sa nouvelle version sans inte
 3. Attente du health check (`healthy`)
 4. Bascule du routage Nginx (`nginx -s reload`)
 5. Vérification finale via le domaine public (avec retry + rollback automatique si échec)
-6. Suppression de l'ancien conteneur
+6. Suppression de l'ancien conteneur.
 
 ## ⚙️ Pipeline CI/CD (GitHub Actions)
 
