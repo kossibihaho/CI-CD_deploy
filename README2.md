@@ -257,18 +257,6 @@ En cas d'échec d'un job, GitHub envoie une **notification par e-mail**.
 
 ---
 
-## ✅ Résultats
-
-Pipeline complet vert (build, test, deploy et monitor), durée totale d'environ **1 min 33 s** :
-
-![Pipeline CI/CD réussi](docs/images/pipeline-success.png)
-
-Applications accessibles en HTTPS via leur nom de domaine :
-
-| Application 1 | Application 2 |
-|---|---|
-| ![App1 en HTTPS](docs/images/app1-https.png) | ![App2 en HTTPS](docs/images/app2-https.png) |
-
 > ℹ️ **Pour maîtriser les coûts AWS, l'instance EC2 a été arrêtée après la réalisation.** Les domaines ne répondent donc plus ; les captures ci-dessus et le [rapport](Rapport_du_travail_CI-CD_deploy.pdf) en attestent. Pour le remettre en ligne : redémarrer l'instance, mettre à jour DuckDNS si l'IP a changé, puis relancer `docker compose up -d` et `./deploy.sh` pour chaque application (voir la limite sur le redémarrage des conteneurs ci-dessous).
 
 ---
